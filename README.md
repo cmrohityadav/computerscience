@@ -1,3 +1,4 @@
 # Computer Science
 
-- [Computer Netwrok](/Computer%20Network/Readme.md)
+- [Computer Network](/Computer%20Network/Readme.md)
+- [Database](/Database/Readme.md)
