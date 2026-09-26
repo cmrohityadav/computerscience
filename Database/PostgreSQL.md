@@ -2,6 +2,11 @@
 - PostgreSQL is an open-source, object-relational database management system known for advanced SQL support, extensibility, data integrity, concurrency, and reliability
 - [Basic Terminal Commands](#basic-terminal-commands)
 - [Connect]()
+- [Database](#Database)
+- [schema](#schema)
+- [Tables](#tables)
+- []()
+
 
 ## Basic Terminal Commands
 ### connect
@@ -28,6 +33,15 @@ psql -U postgres -d mydatabase
 ```
 
 ### Database create
+## 3. psql / Terminal Commands
+
+- \d       → table structure
+- \du      → users/roles
+- \dn      → schemas
+- \dv      → views
+- \df      → functions
+- \?       → psql commands
+- \h       → SQL help
 ```bash
 CREATE DATABASE mydatabase;
 ```
@@ -48,6 +62,14 @@ DROP DATABASE mydatabase;
 ```bash
 \q
 ```
+
+## Database
+- CREATE DATABASE
+- ALTER DATABASE
+- DROP DATABASE
+- Database naming
+- Database connection
+
 ## Schema
 - It is namespace area that live inside a database
 - Schema ko database ke andar folder samjho
@@ -99,33 +121,46 @@ SELECT * FROM store.products; SELECT * FROM admin.products;
 ```
 
 ## Tables
-- CREATE TABLE
-- ALTER TABLE
-- DROP TABLE
-- RENAME
-- ADD COLUMN
-- DROP COLUMN
-- ALTER COLUMN
+### CREATE TABLE
+- NEW Table Banna
+```sql
+CREATE TABLE IF NOT EXISTS store.categories(
+id INTEGER,
+name TEXT
+);
 
-## 3. psql / Terminal Commands
+CREATE TABLE IF NOT EXISTS store.products(
+id INTEGER,
+category_id INTEGER,
+name TEXT,
+price NUMERIC
+);
+```
+28:12
+### ALTER TABLE
+```sql
 
-- \d       → table structure
-- \du      → users/roles
-- \dn      → schemas
-- \dv      → views
-- \df      → functions
-- \?       → psql commands
-- \h       → SQL help
+```
+### DROP TABLE
+```sql
 
-## 4. Database
-- CREATE DATABASE
-- ALTER DATABASE
-- DROP DATABASE
-- Database naming
-- Database connection
+```
+### RENAME
+```sql
 
+```
+### ADD COLUMN
+```sql
 
+```
+### DROP COLUMN
+```sql
 
+```
+### ALTER COLUMN
+```sql
+
+```
 
 
 ## 7. Data Types
