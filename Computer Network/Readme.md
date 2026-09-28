@@ -333,6 +333,24 @@ ARP Table
 Isliye next time same device ko data bhejne ke liye har baar ARP Broadcast karne ki zarurat nahi padti.
 ```
 
+## OSI
+- Open System Interconnection
+
+| Layer | Name | Main responsibility | Examples | Data Unit
+|---|---|---|---|---|
+| 7 | Application | Network services used by applications | HTTP, SMTP, IMAP, POP3, FTP, SSH, DNS | |
+| 6 | Presentation | Data representation, transformation, and protection | Character encoding, serialization formats such as JSON, encryption formats | |
+| 5 | Session | Establishing, coordinating, and ending communication sessions | Session/dialog control; some RPC/session mechanisms | |
+| 4 | Transport | Process-to-process delivery, ports, segmentation, reliability where provided | TCP, UDP; QUIC is commonly discussed around this layer, although it runs over UDP| TCP: segment, UDP: datagram |
+| 3 | Network | Logical addressing and routing between networks | IP, ICMP | IP/packet |
+| 2 | Data Link | Delivery over a local link, framing, MAC addressing, link-level error detection | Ethernet (IEEE 802.3), Wi-Fi (IEEE 802.11), MAC|Frames |
+| 1 | Physical | Transmission of raw bits as physical signals | Copper, fibre, radio waves, electrical/optical signals |
+
+
+
+
+
+
 
 
 
