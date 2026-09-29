@@ -5,8 +5,8 @@
 - [MAC Address](#mac-address)
 - [ARP](#arp)
 - []()
-- []()
-- []()
+- [OSI](#osi)
+- [Routing in Networks](#routing-in-networks)
 - []()
 - []()
 ## Network
@@ -345,6 +345,13 @@ Isliye next time same device ko data bhejne ke liye har baar ARP Broadcast karne
 | 3 | Network | Logical addressing and routing between networks | IP, ICMP | IP/packet |
 | 2 | Data Link | Delivery over a local link, framing, MAC addressing, link-level error detection | Ethernet (IEEE 802.3), Wi-Fi (IEEE 802.11), MAC|Frames |
 | 1 | Physical | Transmission of raw bits as physical signals | Copper, fibre, radio waves, electrical/optical signals |
+
+
+
+## Routing in Networks
+- [src mac| src IP|data| dest ip| dest mac]
+
+## 
 
 
 
