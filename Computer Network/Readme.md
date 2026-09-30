@@ -7,6 +7,10 @@
 - []()
 - [OSI](#osi)
 - [Routing in Networks](#routing-in-networks)
+- [ICMP](#icmp)
+- []()
+- []()
+- []()
 - []()
 - []()
 ## Network
@@ -351,7 +355,49 @@ Isliye next time same device ko data bhejne ke liye har baar ARP Broadcast karne
 ## Routing in Networks
 - [src mac| src IP|data| dest ip| dest mac]
 
-## 
+## ICMP
+- **Internet Control Message Protocol**
+- ICMP ek Network Layer protocol hai.
+- Hum network me issue/error ko identify krne k liye use krte hai
+- Iska use network mein errors ko report karne aur connectivity/diagnostic information provide karne ke liye hota hai
+- Jab network mein packet deliver nahi ho pata ya koi issue aata hai, toh ICMP us issue ki information source (sender) tak pahunchane mein help karta hai
+- network pe error aata usko source k pass pahochta hai
+- Example: ping command ICMP ka use karke check karti hai ki destination host reachable hai ya nahi
+
+### ping
+- Ping ek command-line utility hai, jiska use network par kisi doosri machine ki connectivity check karne ke liye hota hai
+- Yeh ICMP protocol ka use karke destination ko Echo Request bhejta hai aur reply aane par Echo Reply receive karta hai
+- 
+
+#### icmp_seq
+```txt
+Yeh batata hai ki ping ka kaunsa packet hai
+
+icmp_seq=1
+icmp_seq=2
+icmp_seq=3
+icmp_seq=4
+
+Echo Request packet bhejta hai, Unke corresponding replies mein sequence numbers 1, 2, 3, 4 aaye
+
+icmp_seq=1 → pehle packet ka reply
+
+icmp_seq=2 → doosre packet ka reply
+
+icmp_seq=3 → teesre packet ka reply
+
+Isse aap identify kar sakte hain ki kaunse request packet ka reply aaya
+
+```
+#### ttl — Time To Live
+- Source se destination tak packet kitne routers (hops) cross kar sakta hai, uski limit hoti hai. Har router par TTL generally 1 se decrease hota hai
+- TTL ki initial value source device ka operating system set karta hai. Yeh usually packet bhejte waqt set hoti hai
+- Source initial TTL set karta hai, aur har router usse 1 decrease karta hai. Jab TTL 0 ho jata hai, router packet ko discard kar deta hai
+
+#### time — Round-Trip Time (RTT)
+- Yeh batata hai ki aapke computer se destination tak request jaane aur reply wapas aane mein kitna time laga
+
+
 
 
 
