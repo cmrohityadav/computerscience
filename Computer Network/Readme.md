@@ -8,7 +8,7 @@
 - [OSI](#osi)
 - [Routing in Networks](#routing-in-networks)
 - [ICMP](#icmp)
-- []()
+- [UDP](#udp)
 - []()
 - []()
 - []()
@@ -393,13 +393,19 @@ Isse aap identify kar sakte hain ki kaunse request packet ka reply aaya
 - Source se destination tak packet kitne routers (hops) cross kar sakta hai, uski limit hoti hai. Har router par TTL generally 1 se decrease hota hai
 - TTL ki initial value source device ka operating system set karta hai. Yeh usually packet bhejte waqt set hoti hai
 - Source initial TTL set karta hai, aur har router usse 1 decrease karta hai. Jab TTL 0 ho jata hai, router packet ko discard kar deta hai
-
+- generally wahi router apna IP source address ke roop mein bhejta hai jisne packet ko TTL expire hone ki wajah se discard kiya
+- 
 #### time — Round-Trip Time (RTT)
 - Yeh batata hai ki aapke computer se destination tak request jaane aur reply wapas aane mein kitna time laga
 
+### traceroute
+- Traceroute ek networking tool hai jo batata hai ki aapke computer se kisi destination server tak packets kin-kin routers se hokar ja rahe hain
+```bash
+ traceroute google.com
+```
+- Networking mein ise mainly network path trace karne, routing samajhne aur connectivity issues debug karne ke liye use kiya jaata hai
 
-
-
+## UDP
 
 
 
