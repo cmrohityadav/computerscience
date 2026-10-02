@@ -8,8 +8,8 @@
 - [OSI](#osi)
 - [Routing in Networks](#routing-in-networks)
 - [ICMP](#icmp)
+- [TCP](#TCP)
 - [UDP](#udp)
-- []()
 - []()
 - []()
 - []()
@@ -405,7 +405,41 @@ Isse aap identify kar sakte hain ki kaunse request packet ka reply aaya
 ```
 - Networking mein ise mainly network path trace karne, routing samajhne aur connectivity issues debug karne ke liye use kiya jaata hai
 
+## TCP 
 ## UDP
+- User Datagram Protocol
+- It's Layer 4 (`Transport Layer` ) Protocol
+- Data Unit is called as `Datagram`
+- Ports to address processes in the host
+- stateless protocol
+- Does not require connection establishment (unlike tcp's 3 way handshake)
+- very simple protocol for communication
+- Header size of the UDP datagram is only *8 bytes*
+-
+### UDP Datagram Diagram 
+![alt text](./media/udp.png)
+
+             UDP DATAGRAM (RFC 768)
+     0              15 16             31
+     +----------------+----------------+
+  0  |   Source Port  | Destination Port|
+     |    16 bits     |    16 bits     |
+     +----------------+----------------+
+  4  |     Length     |    Checksum    |
+     |    16 bits     |    16 bits     |
+     +----------------+----------------+
+  8  |                                |
+     |                                |
+     |           Application          |
+     |              Data              |
+     |                                |
+     +--------------------------------+
+
+
+- UDP header ka Length field pure UDP datagram ka size batata hai — sirf payload ka nahi
+- UDP checksum ka purpose mainly ye verify karna hai ki UDP datagram transmission ke dauran corrupt/change to nahi hua
+
+
 
 
 
