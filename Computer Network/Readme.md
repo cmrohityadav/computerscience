@@ -406,6 +406,38 @@ Isse aap identify kar sakte hain ki kaunse request packet ka reply aaya
 - Networking mein ise mainly network path trace karne, routing samajhne aur connectivity issues debug karne ke liye use kiya jaata hai
 
 ## TCP 
+- Transmission Control Protocol
+- It's 4 Layer (Transport Layer)
+- Uses `Port Number` to identify application on a host machine
+- it's a connection oriented protocol
+- Stateful protocol
+- Uses 3 way handshake [ SYN -> SYN-ACK -> ACK]
+- Uses a `4 way termination process` ( FIN/ACK) to gracefully close connection
+- Data is divided into `Segment` before transmission
+- Provides relaible,ordered of data between application
+- Receiver sends aknowlegments(ACKs) to confirm recieved data
+- Lost segments are detetcted and retransmitted
+- Due to being reliable has higher overhead than UDP
+
+### TCP 3-Way Handshake
+```txt
+
+Client (192.168.1.5:8000)                                Server (10.0.0.1:80)
+[CLOSED]                                                 [LISTEN]
+   |                                                        |
+   | --- 1. SYN [Seq=1000, Ack=0, Flags=SYN] -------------> |  (SYN_SENT -> SYN_RCVD)
+   |                                                        |
+   | <--- 2. SYN-ACK [Seq=5000, Ack=1001, Flags=SYN,ACK] --- |  [Combined Packet]
+   |                                                        |
+   | --- 3. ACK [Seq=1001, Ack=5001, Flags=ACK] ----------> |
+   |                                                        |
+[ESTABLISHED]                                            [ESTABLISHED]
+```
+
+
+
+
+
 ## UDP
 - User Datagram Protocol
 - It's Layer 4 (`Transport Layer` ) Protocol
@@ -438,6 +470,10 @@ Isse aap identify kar sakte hain ki kaunse request packet ka reply aaya
 
 - UDP header ka Length field pure UDP datagram ka size batata hai — sirf payload ka nahi
 - UDP checksum ka purpose mainly ye verify karna hai ki UDP datagram transmission ke dauran corrupt/change to nahi hua
+
+
+## Wireshark tool
+
 
 
 
