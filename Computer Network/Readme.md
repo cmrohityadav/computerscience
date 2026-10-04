@@ -433,6 +433,53 @@ Client (192.168.1.5:8000)                                Server (10.0.0.1:80)
    |                                                        |
 [ESTABLISHED]                                            [ESTABLISHED]
 ```
+### Understanding the 4-Way Termination
+```txt
+Client (192.168.1.5:8000)                                Server (10.0.0.1:80)
+[ESTABLISHED]                                            [ESTABLISHED]
+   |                                                        |
+   | --- 1. FIN [Seq=2000, Ack=6000, Flags=FIN,ACK] ------> |  (ESTABLISHED -> CLOSE_WAIT)
+   |     (FIN_WAIT_1)                                       |
+   |                                                        |
+   | <--- 2. ACK [Seq=6000, Ack=2001, Flags=ACK] ---------- |  [Client state -> FIN_WAIT_2]
+   |                                                        |
+   | <--- 3. FIN [Seq=6000, Ack=2001, Flags=FIN,ACK] ------ |  (CLOSE_WAIT -> LAST_ACK)
+   |                                                        |
+   | --- 4. ACK [Seq=2001, Ack=6001, Flags=ACK] ----------> |  [Server state -> CLOSED]
+   |     (TIME_WAIT -> CLOSED after 2MSL)                   |
+[CLOSED]                                                 [CLOSED]
+```
+### TCp Sequence Number
+- Every byte sent over a TCP connection is numbered
+- The Sequence Number field contains the position of the first byte of data from original data
+
+```txt
+Data we want to send over HTTP (TCP)
+                +---------------------------------+
+                |         TCPHELLOWORLD           |
+                +---------------------------------+
+                                 |
+                                 |  Break into TCP Segments
+                                 v
+
+    3bytes
+  +---------+           +---------------+           +---------------+
+  |   TCP   |           |     HELLO     |           |     WORLD     |
+  +---------+           +---------------+           +---------------+
+    1 2 3                 4 5 6 7 8                 9 10 11 12 13
+  Seq no: 1               Seq no: 4                   Seq no: 9
+```
+
+- Helps the receiever to reassemble data in the correct order
+- Enable retransmission of lost segments
+- Prevents duplicate data from being accepted mutiple times
+- Initial sequence numbers are shared with each other during the TCP three-way handshaking
+
+### TCP Acknowledgment Number (ACK)
+- ACK is used to confirm successful receipt of data
+- The ACK number contains the next seq. no the receiver expects to  receieve
+- Helps the sender know what data has arrived and what may need retransmission
+
 
 
 
