@@ -480,6 +480,71 @@ Data we want to send over HTTP (TCP)
 - The ACK number contains the next seq. no the receiver expects to  receieve
 - Helps the sender know what data has arrived and what may need retransmission
 
+### TCP Segment header
+```txt
+                         TCP SEGMENT
+                    (RFC 9293 / TCP Header)
+
+                         TCP SEGMENT
+
+      0                   15 16                  31
+   0  +--------------------+----------------------+
+      |     Source Port    |   Destination Port   |
+      |       16 bits      |       16 bits        |
+   4  +--------------------+----------------------+
+      |              Sequence Number              |
+      |                  32 bits                  |
+   8  +-------------------------------------------+
+      |           Acknowledgment Number           |
+      |                  32 bits                  |
+   12 +------+----------+-------------------------+
+      | Data | Reserved |       Control Bits      |
+      |Offset|   3 bits |         9 bits          |
+      |4 bits|          |                         |
+   16 +------+----------+-------------------------+
+      |      Window Size      |      Checksum     |
+      |        16 bits        |      16 bits      |
+   20 +-----------------------+-------------------+
+      |        Urgent Pointer |                    |
+      |         16 bits       |                    |
+   24 +-----------------------+--------------------+
+      |                                              
+      |              TCP Options (Optional)         
+      |                                              
+      +---------------------------------------------+
+      |                                              
+      |                  Padding                     
+      |                                              
+      +---------------------------------------------+
+      |                                              
+      |              Application Data               
+      |                                              
+      +---------------------------------------------+
+
+
+
+
+
+
+ 0                   15 16                  31
+      +------+----------+-------------------------+
+ 12   | Data | Reserved | NS | CWR | ECE | URG  |
+      |Offset|  3 bits  | ACK | PSH | RST | SYN  |
+      |4 bits|          |       FIN               |
+      +------+----------+-------------------------+
+
+
+URG   → Urgent data
+ACK   → Acknowledgment field valid
+PSH   → Push data to application
+RST   → Reset connection
+SYN   → Start / synchronize connection
+FIN   → Finish / close connection
+ECE   → ECN congestion notification
+CWR   → Congestion Window Reduced
+```
+
+
 
 
 
