@@ -544,6 +544,25 @@ ECE   → ECN congestion notification
 CWR   → Congestion Window Reduced
 ```
 
+### MTU
+- Maximum Transmission Unit
+- Largest IP Packet a link can carry without fragmenation
+- MTU include IP Header + TCP/UDP header + payload
+- Ethernet header is not part of MTU
+- Ethernet MTU is tyapically 1500 byte
+- Different links can have different MTUs
+- Exceeding MTU can cause fragmenation or packet drops
+
+### MSS
+- Maximum Segment Size
+- TCP only concept
+- Maximum TCP payload in a single Segment (Except TCP Header)
+- MSS=MTU-IP Header - TCP Header
+- Standard Ethernet MSS= 1460 bytes
+- Advertised during TCP Three Way Handshaking
+- Carried in TCP MSS Option
+- MSS hep avoid fragmentation
+
 
 
 
