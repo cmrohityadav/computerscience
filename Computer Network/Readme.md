@@ -563,6 +563,66 @@ CWR   → Congestion Window Reduced
 - Carried in TCP MSS Option
 - MSS hep avoid fragmentation
 
+### PMTUD (Path MTU Discovery)
+- Mechanism to discover PMTU
+- Prevents Fragmentation
+- Sender start with larger packets
+- Uses DF (Dont't Fragment) bit
+- Routers drop oversized packets
+- Router sends ICMP "Fragmenatation Needed"
+- Sender reduces packet size
+- Continue unitl packets pass successfully
+```markdown
+                         ETHERNET FRAME
+┌──────────────┬──────────────────────────────────────────────┐
+│ Ethernet     │                 Ethernet Payload             │
+│ Header       │                                              │
+│ 14 bytes     │           IP PACKET = MTU 1500 bytes         │
+│              │                                              │
+│              │  ┌────────────────┬────────────┬───────────┐ │
+│              │  │ IP Header      │ TCP Header │ TCP Data  │ │
+│              │  │ 20 bytes       │ 20 bytes   │ 1460 B    │ │
+│              │  └────────────────┴────────────┴───────────┘ │
+└──────────────┴──────────────────────────────────────────────┘
+       14 B                 1500 B
+                  Total Ethernet Frame = 1514 B
+                  (FCS excluded; no VLAN tag)
+
+
+IP PACKET = MTU
+┌────────────────────────────────────────────────────────────┐
+│ IP Header │ TCP Header │          TCP Data                 │
+│  20 B     │    20 B    │           1460 B                  │
+└────────────────────────────────────────────────────────────┘
+<──────────────────── 1500 bytes ────────────────────────────>
+                      MTU = 1500 B
+
+
+TCP SEGMENT
+┌──────────────────┬─────────────────────────────────────────┐
+│ TCP Header       │              TCP Payload                │
+│ 20 bytes         │              1460 bytes                 │
+└──────────────────┴─────────────────────────────────────────┘
+                   <──────── MSS = 1460 B ──────────────────>
+
+
+CALCULATION
+──────────────────────────────────────────────────────────────
+MTU = 1500 bytes
+IP Header = 20 bytes
+TCP Header = 20 bytes
+
+MSS = MTU - IP Header - TCP Header
+    = 1500 - 20 - 20
+    = 1460 bytes
+
+Ethernet Frame = Ethernet Header + IP Packet
+               = 14 + 1500
+               = 1514 bytes (without FCS)
+```
+
+### TCP Flow Control
+
 
 
 
