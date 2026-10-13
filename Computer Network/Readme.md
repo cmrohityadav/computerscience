@@ -622,6 +622,20 @@ Ethernet Frame = Ethernet Header + IP Packet
 ```
 
 ### TCP Flow Control
+- Client send that much only data so reciever can handle it without drop
+
+#### Window Size
+- Available space inside receive buffer of the reciever
+- it is of 16bits
+
+#### Sliding Window In TCP
+
+#### Window Scaling
+- Solves the 65KB TCP window limitation
+- Value ranges from 0 to 14
+- Negotiated during TCP three way handshake
+- uses the TCP window scale option
+- Effective Window Size= window size *2^ (Window scaling factor)
 
 
 
@@ -662,8 +676,13 @@ Ethernet Frame = Ethernet Header + IP Packet
 - UDP header ka Length field pure UDP datagram ka size batata hai — sirf payload ka nahi
 - UDP checksum ka purpose mainly ye verify karna hai ki UDP datagram transmission ke dauran corrupt/change to nahi hua
 
-
 ## Wireshark tool
+
+
+## HTTP
+- Hyper Text Transfer Protocol
+- 
+
 
 
 
